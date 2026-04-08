@@ -95,9 +95,6 @@ export default function TeamPage() {
                 Our leadership team brings strategic direction, deep industry expertise, and a strong focus on client success.
               </p>
             </div>
-            <div className="rounded-full bg-white/5 px-4 py-2 text-sm text-gray-300 inline-flex items-center gap-2">
-              {leaders.length} leaders active
-            </div>
           </div>
         </div>
 
@@ -106,11 +103,11 @@ export default function TeamPage() {
         ) : leaders.length === 0 ? (
           <div className="text-center py-16 text-gray-500">No leaders have been added yet.</div>
         ) : (
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <div className="flex flex-wrap justify-center gap-6">
             {leaders.map((leader) => (
               <div
                 key={leader.id}
-                className="group bg-white/5 border border-white/10 rounded-3xl p-6 hover:border-green-400/40 hover:shadow-[0_20px_80px_rgba(34,197,94,0.10)] transition-all"
+                className="group bg-white/5 border border-white/10 rounded-3xl p-6 hover:border-green-400/40 hover:shadow-[0_20px_80px_rgba(34,197,94,0.10)] transition-all w-full max-w-[400px]"
               >
                 <div className="overflow-hidden rounded-[32px] bg-white/5 mb-6">
                   <img
