@@ -175,8 +175,10 @@ const Footer = async () => {
           <p className="text-xs text-white/20">
             &copy; {currentYear} Wafa Technology. All rights reserved.
           </p>
-          <div className="text-xs text-white/15">
-            Developed by <a href="https://octopi-digital.com/" target="_blank" rel="noopener noreferrer" className="text-emerald-500/40 hover:text-emerald-400 transition-colors">Octopi Digital LLC</a>
+          <div className="flex items-center gap-4 text-xs text-white/15">
+            <Link href="/sitemap.xml" className="hover:text-white/30 transition-colors">Sitemap</Link>
+            <span className="text-white/[0.06]">|</span>
+            <span>Developed by <a href="https://octopi-digital.com/" target="_blank" rel="noopener noreferrer" className="text-emerald-500/40 hover:text-emerald-400 transition-colors">Octopi Digital LLC</a></span>
           </div>
         </div>
       </div>
