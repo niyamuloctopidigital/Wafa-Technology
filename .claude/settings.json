@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e ':*)",
+      "Bash(taskkill //F //IM node.exe)",
+      "Bash(rm -rf .next)",
+      "Bash(npm run:*)",
+      "Bash(nslookup _mongodb._tcp.cluster0.tc050pv.mongodb.net)"
+    ]
+  }
+}

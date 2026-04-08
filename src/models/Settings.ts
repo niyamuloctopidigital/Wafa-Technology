@@ -1,0 +1,50 @@
+import mongoose, { Schema, Document } from 'mongoose';
+
+export interface ISettings extends Document {
+  siteName: string;
+  siteDescription: string;
+  contactEmail: string;
+  phoneNumber: string;
+  address: string;
+  socialLinks: {
+    twitter?: string;
+    linkedin?: string;
+    github?: string;
+    facebook?: string;
+    instagram?: string;
+  };
+  calendarLink?: string;
+  calendarEmbedCode?: string;
+  analytics: {
+    googleAnalyticsId?: string;
+    metaPixelId?: string;
+  };
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+const SettingsSchema = new Schema<ISettings>(
+  {
+    siteName: { type: String, default: 'Wafa Technology' },
+    siteDescription: { type: String, default: '' },
+    contactEmail: { type: String, default: 'info@wafatechnology.com' },
+    phoneNumber: { type: String, default: '+13829254256' },
+    address: { type: String, default: 'Albuquerque, NM 87110, USA' },
+    socialLinks: {
+      twitter: { type: String },
+      linkedin: { type: String },
+      github: { type: String },
+      facebook: { type: String },
+      instagram: { type: String },
+    },
+    calendarLink: { type: String },
+    calendarEmbedCode: { type: String },
+    analytics: {
+      googleAnalyticsId: { type: String },
+      metaPixelId: { type: String },
+    },
+  },
+  { timestamps: true }
+);
+
+export default mongoose.models.Settings || mongoose.model<ISettings>('Settings', SettingsSchema);
