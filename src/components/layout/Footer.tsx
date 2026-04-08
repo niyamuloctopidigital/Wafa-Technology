@@ -4,7 +4,7 @@ import dbConnect from '@/lib/mongodb';
 import Settings from '@/models/Settings';
 
 const Footer = async () => {
-  let settings = null;
+  let settings: any = null;
 
   if (process.env.MONGODB_URI) {
     try {
