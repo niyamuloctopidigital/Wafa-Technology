@@ -88,13 +88,11 @@ export default function TeamPage() {
 
       <section className="max-container px-4 sm:px-6 lg:px-8 pb-16">
         <div className="mb-10">
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-            <div>
-              <h2 className="text-3xl font-semibold">Leadership Team</h2>
-              <p className="text-gray-400 mt-2 max-w-2xl">
-                Our leadership team brings strategic direction, deep industry expertise, and a strong focus on client success.
-              </p>
-            </div>
+          <div className="text-center">
+            <h2 className="text-3xl font-semibold">Leadership Team</h2>
+            <p className="text-gray-400 mt-2 max-w-2xl mx-auto">
+              Our leadership team brings strategic direction, deep industry expertise, and a strong focus on client success.
+            </p>
           </div>
         </div>
 
