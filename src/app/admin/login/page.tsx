@@ -81,12 +81,6 @@ export default function AdminLoginPage() {
                 className="h-16 w-auto object-contain"
               />
             </div>
-            <div className="text-3xl font-bold mb-2">
-              <span className="bg-gradient-to-r from-[#4ADE80] to-green-400 bg-clip-text text-transparent">
-                Wafa
-              </span>
-              <span className="text-gray-200"> Technology</span>
-            </div>
             <p className="text-gray-500 text-sm">Admin Portal</p>
           </div>
 
