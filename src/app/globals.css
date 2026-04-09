@@ -437,31 +437,36 @@ html.light [class*="shadow-2xl"] {
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08) !important;
 }
 
-/* Device mockups - keep dark but add visible border in light mode */
+/* Device mockups - keep dark but add visible border/shadow in light mode */
 html.light [class*="rounded-[28px]"][class*="bg-[#0a0a0a]"],
 html.light [class*="rounded-[32px]"][class*="bg-[#0a0a0a]"],
-html.light [class*="rounded-xl"][class*="bg-[#0a0a0a]"][class*="overflow-hidden"],
 html.light [class*="rounded-[20px]"][class*="bg-[#0a0a0a]"] {
   background-color: #0a0a0a !important;
   border-color: rgba(0, 0, 0, 0.15) !important;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.08) !important;
 }
 
-/* Keep text inside device mockups white */
-html.light [class*="rounded-[28px]"][class*="bg-[#0a0a0a]"] [class*="text-white"],
-html.light [class*="rounded-[32px]"][class*="bg-[#0a0a0a]"] [class*="text-white"],
-html.light [class*="rounded-[20px]"][class*="bg-[#0a0a0a]"] [class*="text-white"],
-html.light [class*="rounded-xl"][class*="bg-[#0a0a0a]"][class*="overflow-hidden"] [class*="text-white"],
-html.light [class*="rounded-xl"][class*="bg-[#0c0c0c]"] [class*="text-white"] {
-  color: #ffffff !important;
+/* Keep ALL text inside device mockups original colors */
+html.light [class*="rounded-[28px]"][class*="bg-[#0a0a0a]"] *,
+html.light [class*="rounded-[32px]"][class*="bg-[#0a0a0a]"] *,
+html.light [class*="rounded-[20px]"][class*="bg-[#0a0a0a]"] * {
+  color: revert !important;
 }
 
-/* Keep code terminal dark */
+/* Code terminal - keep dark with all original text colors */
 html.light [class*="bg-[#0c0c0c]"] {
   background-color: #0c0c0c !important;
+  border-color: rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.08) !important;
 }
 html.light [class*="bg-[#0c0c0c]"] * {
   color: revert !important;
+}
+html.light [class*="bg-[#0c0c0c]"] [class*="bg-white"] {
+  background-color: revert !important;
+}
+html.light [class*="bg-[#0c0c0c]"] [class*="border-white"] {
+  border-color: revert !important;
 }
 
 /* Gradient fade edges for marquee */
