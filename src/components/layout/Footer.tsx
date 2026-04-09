@@ -71,7 +71,7 @@ const Footer = async () => {
           <div className="sm:col-span-2 lg:col-span-4">
             <Link href="/" className="inline-flex mb-5">
               <img
-                src="https://wafatechnology.com/wp-content/uploads/2025/11/Frame-1597879963.png"
+                src="https://assets.cdn.filesafe.space/j53xn6YJHwIdPImV00rn/media/69d764e6ebf1a6084361a27e.webp"
                 alt="Wafa Technology Logo"
                 className="h-8 w-auto"
                 style={{ imageRendering: 'auto' }}

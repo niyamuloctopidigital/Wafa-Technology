@@ -55,7 +55,7 @@ export default function RootLayout({
               '@type': 'Organization',
               name: 'Wafa Technology',
               url: 'https://wafatechnology.com',
-              logo: 'https://wafatechnology.com/wp-content/uploads/2025/11/Frame-1597879963.png',
+              logo: 'https://assets.cdn.filesafe.space/j53xn6YJHwIdPImV00rn/media/69d764e6ebf1a6084361a27e.webp',
               description: 'AI-Driven Software Solutions',
               sameAs: [
                 'https://twitter.com/wafatechnology',

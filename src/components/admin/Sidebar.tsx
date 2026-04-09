@@ -54,7 +54,7 @@ export default function Sidebar() {
         <div className="px-6 py-6 border-b border-gray-100">
           <Link href="/admin" className="flex items-center gap-2">
             <img
-              src="https://wafatechnology.com/wp-content/uploads/2025/11/Frame-1597879963.png"
+              src="https://assets.cdn.filesafe.space/j53xn6YJHwIdPImV00rn/media/69d764e6ebf1a6084361a27e.webp"
               alt="Wafa Technology"
               className="h-8 w-auto"
             />

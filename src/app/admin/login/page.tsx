@@ -76,7 +76,7 @@ export default function AdminLoginPage() {
           <div className="text-center mb-8">
             <div className="flex justify-center mb-4">
               <img
-                src="https://wafatechnology.com/wp-content/uploads/2025/11/Frame-1597879963.png"
+                src="https://assets.cdn.filesafe.space/j53xn6YJHwIdPImV00rn/media/69d764e6ebf1a6084361a27e.webp"
                 alt="Wafa Technology Logo"
                 className="h-12 w-auto object-contain"
                 style={{ imageRendering: 'auto' }}
