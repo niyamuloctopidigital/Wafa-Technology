@@ -88,11 +88,9 @@ export default function BookingPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="rounded-2xl border border-white/[0.06] bg-white/[0.02] overflow-hidden"
           >
             {calendarEmbedCode ? (
               <div
-                className="min-h-[600px]"
                 dangerouslySetInnerHTML={{ __html: calendarEmbedCode }}
               />
             ) : calendarLink ? (
@@ -101,7 +99,7 @@ export default function BookingPage() {
                 width="100%"
                 height="700"
                 frameBorder="0"
-                className="w-full min-h-[600px]"
+                className="w-full"
                 title="Book a consultation"
               />
             ) : (
