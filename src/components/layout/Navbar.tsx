@@ -4,7 +4,8 @@ import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { Menu, X, Brain, Code2, Smartphone, Server, Cloud, BarChart3 } from 'lucide-react';
+import { Menu, X, Brain, Code2, Smartphone, Server, Cloud, BarChart3, Sun, Moon } from 'lucide-react';
+import { useTheme } from '@/components/ThemeProvider';
 
 const services = [
   {
@@ -45,6 +46,7 @@ export default function Navbar() {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [activeLink, setActiveLink] = useState('home');
   const pathname = usePathname();
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -166,25 +168,61 @@ export default function Navbar() {
             </motion.div>
           </div>
 
-          {/* Right - CTA Button */}
-          <div className="hidden lg:block flex-shrink-0">
-            <Link
-              href="/contact"
-              className="glow-button px-6 py-2 font-medium rounded-lg flex items-center gap-2"
+          {/* Right - Theme Toggle + CTA */}
+          <div className="flex items-center gap-3 flex-shrink-0">
+            {/* Theme Toggle */}
+            <motion.button
+              onClick={toggleTheme}
+              className="relative w-9 h-9 rounded-full flex items-center justify-center text-white/50 hover:text-white dark:bg-white/[0.05] bg-black/[0.05] border border-white/[0.06] dark:border-white/[0.06] transition-colors"
+              whileTap={{ scale: 0.9 }}
+              whileHover={{ scale: 1.05 }}
+              aria-label="Toggle theme"
             >
-              Book a Call
-              <span className="inline-block">→</span>
-            </Link>
-          </div>
+              <AnimatePresence mode="wait">
+                {theme === 'dark' ? (
+                  <motion.div
+                    key="sun"
+                    initial={{ rotate: -90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: 90, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Sun size={16} />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="moon"
+                    initial={{ rotate: 90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: -90, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Moon size={16} />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.button>
 
-          {/* Mobile Menu Toggle */}
-          <motion.button
-            className="lg:hidden text-white/70 hover:text-white transition-colors p-2 -mr-2"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            whileTap={{ scale: 0.95 }}
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </motion.button>
+            {/* CTA Button */}
+            <div className="hidden lg:block">
+              <Link
+                href="/contact"
+                className="glow-button px-6 py-2 font-medium rounded-lg flex items-center gap-2"
+              >
+                Book a Call
+                <span className="inline-block">→</span>
+              </Link>
+            </div>
+
+            {/* Mobile Menu Toggle */}
+            <motion.button
+              className="lg:hidden text-white/70 hover:text-white transition-colors p-2 -mr-2"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              whileTap={{ scale: 0.95 }}
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </motion.button>
+          </div>
         </div>
       </motion.nav>
 

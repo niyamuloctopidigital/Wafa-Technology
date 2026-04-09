@@ -29,8 +29,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`dark ${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: `
+          (function() {
+            try {
+              var stored = localStorage.getItem('wafa-theme');
+              if (stored === 'light' || stored === 'dark') {
+                document.documentElement.className = document.documentElement.className.replace(/dark|light/g, '') + ' ' + stored;
+              } else {
+                var hour = new Date().getHours();
+                var auto = (hour >= 6 && hour < 18) ? 'light' : 'dark';
+                document.documentElement.className = document.documentElement.className.replace(/dark|light/g, '') + ' ' + auto;
+              }
+            } catch(e) {}
+          })();
+        `}} />
         <link rel="icon" href="https://wafatechnology.com/wp-content/uploads/2025/11/WF-LOGO1-2-3.png" />
         <link rel="apple-touch-icon" href="https://wafatechnology.com/wp-content/uploads/2025/11/WF-LOGO1-2-3.png" />
         <script
@@ -57,7 +71,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="bg-dark text-white">
+      <body>
         <Providers>
           <Navbar />
           <main className="min-h-screen">
