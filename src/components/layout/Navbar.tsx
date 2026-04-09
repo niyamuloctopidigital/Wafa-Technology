@@ -180,7 +180,7 @@ export default function Navbar() {
             {/* Theme Toggle */}
             <motion.button
               onClick={toggleTheme}
-              className="relative w-9 h-9 rounded-full flex items-center justify-center text-white/50 hover:text-white dark:bg-white/[0.05] bg-black/[0.05] border border-white/[0.06] dark:border-white/[0.06] transition-colors"
+              className="theme-toggle-btn relative w-9 h-9 rounded-full flex items-center justify-center transition-colors"
               whileTap={{ scale: 0.9 }}
               whileHover={{ scale: 1.05 }}
               aria-label="Toggle theme"

@@ -280,6 +280,19 @@
 .animate-marquee { animation: marquee 30s linear infinite; }
 
 /* ============================= */
+/* === THEME TOGGLE BUTTON === */
+/* ============================= */
+
+/* Dark */
+.theme-toggle-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); }
+.theme-toggle-btn:hover { color: #ffffff; background: rgba(255,255,255,0.1); }
+
+/* Light */
+html.light .theme-toggle-btn { background: rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.1); color: rgba(0,0,0,0.5) !important; }
+html.light .theme-toggle-btn:hover { color: #111827 !important; background: rgba(0,0,0,0.08); }
+html.light .theme-toggle-btn svg { color: inherit !important; }
+
+/* ============================= */
 /* === BROWSER MOCKUP THEME === */
 /* ============================= */
 
