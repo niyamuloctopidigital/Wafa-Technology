@@ -91,18 +91,19 @@ export default function BookingPage() {
           >
             {calendarEmbedCode ? (
               <div
-                style={{ minHeight: '900px' }}
-                dangerouslySetInnerHTML={{ __html: calendarEmbedCode }}
+                className="booking-embed-container"
+                dangerouslySetInnerHTML={{ __html: calendarEmbedCode.replace(
+                  /style="[^"]*"/g,
+                  'style="width:100%;min-height:800px;height:100vh;border:none;overflow:visible;"'
+                ) }}
               />
             ) : calendarLink ? (
               <iframe
                 src={calendarLink}
                 width="100%"
-                height="1000"
                 frameBorder="0"
-                scrolling="no"
                 className="w-full"
-                style={{ minHeight: '900px', border: 'none' }}
+                style={{ minHeight: '800px', height: '100vh', border: 'none' }}
                 title="Book a consultation"
               />
             ) : (
