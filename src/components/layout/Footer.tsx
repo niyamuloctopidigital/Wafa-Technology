@@ -61,7 +61,8 @@ const Footer = async () => {
               <img
                 src="https://wafatechnology.com/wp-content/uploads/2025/11/Frame-1597879963.png"
                 alt="Wafa Technology Logo"
-                className="h-10 w-auto"
+                className="h-8 w-auto"
+                style={{ imageRendering: 'auto' }}
               />
             </Link>
             <p className="text-white/30 text-sm leading-relaxed mb-6">

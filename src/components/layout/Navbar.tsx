@@ -91,7 +91,8 @@ export default function Navbar() {
             <img
               src="https://wafatechnology.com/wp-content/uploads/2025/11/Frame-1597879963.png"
               alt="Wafa Technology Logo"
-              className="h-12 w-auto"
+              className="h-9 w-auto"
+              style={{ imageRendering: 'auto' }}
             />
           </Link>
 

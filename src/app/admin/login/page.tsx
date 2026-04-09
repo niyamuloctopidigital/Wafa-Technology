@@ -78,7 +78,8 @@ export default function AdminLoginPage() {
               <img
                 src="https://wafatechnology.com/wp-content/uploads/2025/11/Frame-1597879963.png"
                 alt="Wafa Technology Logo"
-                className="h-16 w-auto object-contain"
+                className="h-12 w-auto object-contain"
+                style={{ imageRendering: 'auto' }}
               />
             </div>
             <p className="text-gray-500 text-sm">Admin Portal</p>
