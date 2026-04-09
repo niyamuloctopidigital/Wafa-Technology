@@ -10,6 +10,7 @@ interface Settings {
   contactEmail: string;
   phoneNumber: string;
   address: string;
+  faviconUrl: string;
   socialLinks: {
     twitter?: string;
     linkedin?: string;
@@ -31,6 +32,7 @@ const initialSettings: Settings = {
   contactEmail: 'info@wafatechnology.com',
   phoneNumber: '+13829254256',
   address: 'Albuquerque, NM 87110, USA',
+  faviconUrl: '',
   socialLinks: {
     twitter: '',
     linkedin: '',
@@ -263,6 +265,39 @@ export default function SettingsPage() {
                 className="w-full px-4 py-2 bg-[#0a0a0a] border border-gray-700 rounded-lg text-gray-200 focus:border-[#4ADE80] focus:outline-none transition-colors"
               />
             </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-300 mb-2">Instagram</label>
+              <input
+                type="url"
+                value={settings.socialLinks.instagram || ''}
+                onChange={(e) =>
+                  setSettings({
+                    ...settings,
+                    socialLinks: { ...settings.socialLinks, instagram: e.target.value },
+                  })
+                }
+                placeholder="https://instagram.com/..."
+                className="w-full px-4 py-2 bg-[#0a0a0a] border border-gray-700 rounded-lg text-gray-200 focus:border-[#4ADE80] focus:outline-none transition-colors"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Favicon */}
+        <div className="bg-[#111111] border border-gray-800 rounded-lg p-6">
+          <h2 className="text-xl font-bold text-gray-200 mb-2">Favicon</h2>
+          <p className="text-sm text-gray-400 mb-4">Paste the URL of your favicon image (PNG, ICO, or WebP)</p>
+          <div className="flex items-center gap-4">
+            <input
+              type="url"
+              value={settings.faviconUrl || ''}
+              onChange={(e) => setSettings({ ...settings, faviconUrl: e.target.value })}
+              placeholder="https://example.com/favicon.png"
+              className="flex-1 px-4 py-2 bg-[#0a0a0a] border border-gray-700 rounded-lg text-gray-200 focus:border-[#4ADE80] focus:outline-none transition-colors"
+            />
+            {settings.faviconUrl && (
+              <img src={settings.faviconUrl} alt="Favicon preview" className="w-8 h-8 rounded object-contain bg-white/10 p-1" />
+            )}
           </div>
         </div>
 

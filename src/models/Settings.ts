@@ -6,6 +6,7 @@ export interface ISettings extends Document {
   contactEmail: string;
   phoneNumber: string;
   address: string;
+  faviconUrl?: string;
   socialLinks: {
     twitter?: string;
     linkedin?: string;
@@ -30,6 +31,7 @@ const SettingsSchema = new Schema<ISettings>(
     contactEmail: { type: String, default: 'info@wafatechnology.com' },
     phoneNumber: { type: String, default: '+13829254256' },
     address: { type: String, default: 'Albuquerque, NM 87110, USA' },
+    faviconUrl: { type: String, default: '' },
     socialLinks: {
       twitter: { type: String },
       linkedin: { type: String },

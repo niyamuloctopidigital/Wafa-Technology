@@ -4,6 +4,8 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import Providers from './providers';
 import { Toaster } from 'react-hot-toast';
+import dbConnect from '@/lib/mongodb';
+import Settings from '@/models/Settings';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
@@ -23,11 +25,26 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+const defaultFavicon = 'https://wafatechnology.com/wp-content/uploads/2025/11/WF-LOGO1-2-3.png';
+
+async function getFavicon(): Promise<string> {
+  try {
+    if (process.env.MONGODB_URI) {
+      await dbConnect();
+      const settings: any = await Settings.findOne().lean();
+      if (settings?.faviconUrl) return settings.faviconUrl;
+    }
+  } catch (e) {}
+  return defaultFavicon;
+}
+
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const faviconUrl = await getFavicon();
+
   return (
     <html lang="en" className={`dark ${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
       <head>
@@ -45,8 +62,8 @@ export default function RootLayout({
             } catch(e) {}
           })();
         `}} />
-        <link rel="icon" href="https://wafatechnology.com/wp-content/uploads/2025/11/WF-LOGO1-2-3.png" />
-        <link rel="apple-touch-icon" href="https://wafatechnology.com/wp-content/uploads/2025/11/WF-LOGO1-2-3.png" />
+        <link rel="icon" href={faviconUrl} />
+        <link rel="apple-touch-icon" href={faviconUrl} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
