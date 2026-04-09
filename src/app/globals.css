@@ -437,37 +437,33 @@ html.light [class*="shadow-2xl"] {
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08) !important;
 }
 
-/* Device mockups - keep dark but add visible border/shadow in light mode */
-html.light [class*="rounded-[28px]"][class*="bg-[#0a0a0a]"],
-html.light [class*="rounded-[32px]"][class*="bg-[#0a0a0a]"],
-html.light [class*="rounded-[20px]"][class*="bg-[#0a0a0a]"] {
-  background-color: #0a0a0a !important;
-  border-color: rgba(0, 0, 0, 0.15) !important;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.08) !important;
-}
-
-/* Keep ALL text inside device mockups original colors */
-html.light [class*="rounded-[28px]"][class*="bg-[#0a0a0a]"] *,
-html.light [class*="rounded-[32px]"][class*="bg-[#0a0a0a]"] *,
-html.light [class*="rounded-[20px]"][class*="bg-[#0a0a0a]"] * {
-  color: revert !important;
-}
-
-/* Code terminal - keep dark with all original text colors */
+/* Device mockups & terminals - become white in light mode */
+html.light [class*="bg-[#0a0a0a]"],
 html.light [class*="bg-[#0c0c0c]"] {
-  background-color: #0c0c0c !important;
-  border-color: rgba(0, 0, 0, 0.15) !important;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.08) !important;
+  background-color: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.06) !important;
 }
-html.light [class*="bg-[#0c0c0c]"] * {
-  color: revert !important;
+
+/* Dynamic island / notch stays dark in light mode */
+html.light [class*="rounded-full"][class*="bg-black"] {
+  background-color: #111 !important;
 }
-html.light [class*="bg-[#0c0c0c]"] [class*="bg-white"] {
-  background-color: revert !important;
-}
-html.light [class*="bg-[#0c0c0c]"] [class*="border-white"] {
-  border-color: revert !important;
-}
+
+/* Terminal colored dots */
+html.light [class*="bg-red-400"],
+html.light [class*="bg-red-500"] { background-color: revert !important; }
+html.light [class*="bg-yellow-400"],
+html.light [class*="bg-yellow-500"] { background-color: revert !important; }
+html.light [class*="bg-green-400"],
+html.light [class*="bg-green-500"] { background-color: revert !important; }
+
+/* Code syntax colors stay colorful in light mode */
+html.light .text-purple-400 { color: #7c3aed !important; }
+html.light .text-blue-300 { color: #2563eb !important; }
+html.light .text-yellow-300 { color: #ca8a04 !important; }
+html.light .text-orange-300 { color: #c2410c !important; }
+html.light .font-mono .text-emerald-400 { color: #059669 !important; }
 
 /* Gradient fade edges for marquee */
 html.light [class*="from-[#050505]"] {
