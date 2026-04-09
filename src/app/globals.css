@@ -7,6 +7,19 @@
     --accent: 74, 222, 128;
     --dark: 10, 10, 10;
     --accent-hex: #4ADE80;
+    --dropdown-bg: #111111;
+    --dropdown-border: rgba(255, 255, 255, 0.1);
+    --dropdown-hover: rgba(255, 255, 255, 0.05);
+    --dropdown-title: #ffffff;
+    --dropdown-desc: rgba(255, 255, 255, 0.4);
+  }
+
+  html.light {
+    --dropdown-bg: #ffffff;
+    --dropdown-border: rgba(0, 0, 0, 0.1);
+    --dropdown-hover: rgba(0, 0, 0, 0.04);
+    --dropdown-title: #111827;
+    --dropdown-desc: rgba(17, 24, 39, 0.5);
   }
 
   html {

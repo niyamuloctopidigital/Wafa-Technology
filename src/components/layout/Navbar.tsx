@@ -139,21 +139,28 @@ export default function Navbar() {
                         transition={{ type: 'spring', damping: 20, stiffness: 300 }}
                         className="absolute top-full left-1/2 transform -translate-x-1/2 mt-3 w-[680px]"
                       >
-                        <div className="glass-card p-5 rounded-2xl border border-white/[0.08] shadow-2xl">
+                        <div className="services-dropdown p-5 rounded-2xl shadow-2xl" style={{
+                          background: 'var(--dropdown-bg)',
+                          border: '1px solid var(--dropdown-border)',
+                          backdropFilter: 'blur(20px)',
+                        }}>
                           <div className="grid grid-cols-3 gap-2">
                             {services.map((service, idx) => (
                               <Link
                                 key={idx}
                                 href="/services"
-                                className="group p-3 rounded-xl hover:bg-white/[0.04] transition-all cursor-pointer duration-200"
+                                className="group p-3 rounded-xl transition-all cursor-pointer duration-200"
+                                style={{ ['--hover-bg' as string]: 'var(--dropdown-hover)' }}
+                                onMouseEnter={(e) => e.currentTarget.style.background = 'var(--dropdown-hover)'}
+                                onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
                               >
                                 <div className="mb-2 w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
                                   <service.Icon size={15} className="text-emerald-400" strokeWidth={1.5} />
                                 </div>
-                                <h3 className="font-medium text-sm text-white mb-0.5">
+                                <h3 className="font-medium text-sm mb-0.5" style={{ color: 'var(--dropdown-title)' }}>
                                   {service.title}
                                 </h3>
-                                <p className="text-xs text-white/35 leading-relaxed">
+                                <p className="text-xs leading-relaxed" style={{ color: 'var(--dropdown-desc)' }}>
                                   {service.description}
                                 </p>
                               </Link>
