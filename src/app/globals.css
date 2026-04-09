@@ -280,6 +280,38 @@
 .animate-marquee { animation: marquee 30s linear infinite; }
 
 /* ============================= */
+/* === FOOTER THEME STYLES === */
+/* ============================= */
+
+/* Dark footer (default) */
+.footer-wrapper { background: #060606; }
+.footer-text-muted { color: rgba(255,255,255,0.4); }
+.footer-text-primary { color: #ffffff; }
+.footer-text-faint { color: rgba(255,255,255,0.15); }
+.footer-heading { color: rgba(255,255,255,0.2); }
+.footer-link:hover { color: #ffffff; }
+.footer-icon-box { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); }
+.footer-icon { color: rgba(255,255,255,0.3); }
+.footer-social-icon { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); color: rgba(255,255,255,0.3); }
+.footer-social-icon:hover { color: #4ADE80; border-color: rgba(74,222,128,0.2); }
+.footer-border-top { border-top: 1px solid rgba(255,255,255,0.04); }
+.footer-newsletter-box { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); }
+
+/* Light footer */
+html.light .footer-wrapper { background: #f0f1f3; }
+html.light .footer-text-muted { color: rgba(0,0,0,0.45); }
+html.light .footer-text-primary { color: #111827; }
+html.light .footer-text-faint { color: rgba(0,0,0,0.25); }
+html.light .footer-heading { color: rgba(0,0,0,0.35); }
+html.light .footer-link:hover { color: #111827; }
+html.light .footer-icon-box { background: rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.08); }
+html.light .footer-icon { color: rgba(0,0,0,0.35); }
+html.light .footer-social-icon { background: rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.08); color: rgba(0,0,0,0.35); }
+html.light .footer-social-icon:hover { color: #16a34a; border-color: rgba(22,163,74,0.3); background: rgba(22,163,74,0.06); }
+html.light .footer-border-top { border-top: 1px solid rgba(0,0,0,0.06); }
+html.light .footer-newsletter-box { background: rgba(22,163,74,0.04); border: 1px solid rgba(22,163,74,0.1); }
+
+/* ============================= */
 /* === LIGHT MODE OVERRIDES === */
 /* ============================= */
 html.light {
