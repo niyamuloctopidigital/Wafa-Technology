@@ -59,7 +59,6 @@ export default function Navbar() {
     if (pathname?.startsWith('/team')) setActiveLink('team');
     else if (pathname?.startsWith('/services')) setActiveLink('services');
     else if (pathname?.startsWith('/projects')) setActiveLink('projects');
-    else if (pathname?.startsWith('/blog')) setActiveLink('blog');
     else if (pathname?.startsWith('/about')) setActiveLink('about');
     else if (pathname?.startsWith('/contact')) setActiveLink('contact');
     else setActiveLink('home');
@@ -69,7 +68,6 @@ export default function Navbar() {
     { name: 'Services', id: 'services', href: '/services' },
     { name: 'Projects', id: 'projects', href: '/projects' },
     { name: 'Team', id: 'team', href: '/team' },
-    { name: 'Blog', id: 'blog', href: '/blog' },
     { name: 'About', id: 'about', href: '/about' },
     { name: 'Contact', id: 'contact', href: '/contact' },
   ];
