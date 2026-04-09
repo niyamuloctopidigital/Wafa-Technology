@@ -17,10 +17,19 @@ export default function AdminLayout({
 
   useEffect(() => {
     document.body.classList.add('admin-dashboard');
+    // Force dark mode for admin
+    document.documentElement.classList.remove('light');
+    document.documentElement.classList.add('dark');
     setIsMounted(true);
 
     return () => {
       document.body.classList.remove('admin-dashboard');
+      // Restore user's theme preference when leaving admin
+      const stored = localStorage.getItem('wafa-theme');
+      if (stored === 'light') {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+      }
     };
   }, []);
 

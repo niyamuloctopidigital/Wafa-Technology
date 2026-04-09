@@ -286,60 +286,6 @@
 /* ============================= */
 /* === ADMIN ALWAYS DARK === */
 /* ============================= */
-html.light body.admin-dashboard {
-  background-color: #0a0a0a !important;
-  color: #ffffff !important;
-}
-
-html.light body.admin-dashboard .text-white,
-html.light body.admin-dashboard .text-gray-200,
-html.light body.admin-dashboard .text-gray-300,
-html.light body.admin-dashboard .text-gray-400,
-html.light body.admin-dashboard .text-gray-500,
-html.light body.admin-dashboard [class*="text-white"],
-html.light body.admin-dashboard [class*="text-gray"] {
-  color: revert !important;
-}
-
-html.light body.admin-dashboard [class*="bg-[#"],
-html.light body.admin-dashboard [class*="bg-black"],
-html.light body.admin-dashboard [class*="bg-gray"],
-html.light body.admin-dashboard [class*="bg-white/"],
-html.light body.admin-dashboard [class*="bg-opacity"] {
-  background-color: revert !important;
-}
-
-html.light body.admin-dashboard [class*="border-gray"],
-html.light body.admin-dashboard [class*="border-white"],
-html.light body.admin-dashboard [class*="border-[#"] {
-  border-color: revert !important;
-}
-
-html.light body.admin-dashboard input,
-html.light body.admin-dashboard textarea,
-html.light body.admin-dashboard select {
-  background-color: revert !important;
-  border-color: revert !important;
-  color: revert !important;
-}
-
-html.light body.admin-dashboard input::placeholder,
-html.light body.admin-dashboard textarea::placeholder {
-  color: revert !important;
-}
-
-html.light body.admin-dashboard [class*="shadow"] {
-  box-shadow: revert !important;
-}
-
-html.light body.admin-dashboard .text-\[\#4ADE80\],
-html.light body.admin-dashboard [class*="text-[#4ADE80]"],
-html.light body.admin-dashboard [class*="text-[#22c55e]"],
-html.light body.admin-dashboard [class*="bg-[#4ADE80]"],
-html.light body.admin-dashboard [class*="from-[#4ADE80]"] {
-  color: revert !important;
-  background-color: revert !important;
-}
 
 /* ============================= */
 /* === THEME TOGGLE BUTTON === */
