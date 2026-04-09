@@ -280,6 +280,27 @@
 .animate-marquee { animation: marquee 30s linear infinite; }
 
 /* ============================= */
+/* === MOBILE MENU THEME === */
+/* ============================= */
+
+/* Dark mobile menu */
+.mobile-menu-panel { background: #0a0a0a; border-left: 1px solid rgba(255,255,255,0.06); }
+.mobile-menu-close { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.5); }
+.mobile-menu-close:hover { color: #fff; }
+.mobile-menu-link { color: rgba(255,255,255,0.7); }
+.mobile-menu-link:hover { color: #ffffff; }
+.mobile-menu-border { border-color: rgba(255,255,255,0.04); }
+
+/* Light mobile menu */
+html.light .mobile-menu-panel { background: #ffffff; border-left: 1px solid rgba(0,0,0,0.08); }
+html.light .mobile-menu-close { background: rgba(0,0,0,0.05); color: rgba(0,0,0,0.5); }
+html.light .mobile-menu-close:hover { color: #111; }
+html.light .mobile-menu-link { color: rgba(0,0,0,0.6) !important; }
+html.light .mobile-menu-link:hover { color: #111827 !important; }
+html.light .mobile-menu-border { border-color: rgba(0,0,0,0.06); }
+html.light .mobile-menu-link.text-emerald-500 { color: #16a34a !important; }
+
+/* ============================= */
 /* === FOOTER THEME STYLES === */
 /* ============================= */
 

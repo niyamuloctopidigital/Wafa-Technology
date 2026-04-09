@@ -233,7 +233,7 @@ export default function Navbar() {
         </div>
       </motion.nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - opens from RIGHT */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -241,18 +241,30 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-black/80 backdrop-blur-sm lg:hidden"
+            className="fixed inset-0 z-40 lg:hidden"
+            style={{ background: theme === 'light' ? 'rgba(0,0,0,0.3)' : 'rgba(0,0,0,0.7)' }}
             onClick={() => setIsMobileMenuOpen(false)}
           >
             <motion.div
-              initial={{ x: -400 }}
+              initial={{ x: 400 }}
               animate={{ x: 0 }}
-              exit={{ x: -400 }}
+              exit={{ x: 400 }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="absolute left-0 top-0 bottom-0 w-[80vw] max-w-sm bg-gradient-to-b from-white/10 to-black/40 backdrop-blur-xl border-r border-white/10 flex flex-col"
+              className="mobile-menu-panel absolute right-0 top-0 bottom-0 w-[80vw] max-w-sm flex flex-col"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="pt-24 px-6 flex-1 flex flex-col gap-6">
+              {/* Close button */}
+              <div className="flex justify-end pt-6 px-6">
+                <motion.button
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="mobile-menu-close w-10 h-10 rounded-full flex items-center justify-center"
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <X size={20} />
+                </motion.button>
+              </div>
+
+              <div className="pt-8 px-6 flex-1 flex flex-col gap-5">
                 {navLinks.map((link, idx) => (
                   <Link
                     key={link.id}
@@ -263,10 +275,12 @@ export default function Navbar() {
                     }}
                   >
                     <motion.div
-                      initial={{ opacity: 0, x: -20 }}
+                      initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: idx * 0.1 }}
-                      className="text-white font-display text-3xl text-left hover:text-green-400 transition-colors font-bold"
+                      transition={{ delay: idx * 0.08 }}
+                      className={`mobile-menu-link font-display text-2xl text-right font-bold py-2 border-b mobile-menu-border ${
+                        activeLink === link.id ? 'text-emerald-500' : ''
+                      }`}
                     >
                       {link.name}
                     </motion.div>
@@ -277,15 +291,17 @@ export default function Navbar() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
+                transition={{ delay: 0.4 }}
                 className="px-6 pb-8"
               >
-                <motion.button
-                  className="glow-button w-full py-3 font-medium rounded-lg"
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Book a Call
-                </motion.button>
+                <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+                  <motion.div
+                    className="glow-button w-full py-3 font-medium rounded-lg text-center"
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Book a Call
+                  </motion.div>
+                </Link>
               </motion.div>
             </motion.div>
           </motion.div>
