@@ -31,12 +31,16 @@
   /* Dark mode (default) */
   html.dark body,
   html:not(.light) body {
-    @apply bg-[#050505] text-white overflow-x-hidden;
+    background-color: #050505;
+    color: #ffffff;
+    overflow-x: hidden;
   }
 
   /* Light mode */
   html.light body {
-    @apply bg-[#f8f9fa] text-[#111] overflow-x-hidden;
+    background-color: #f8f9fa;
+    color: #111111;
+    overflow-x: hidden;
   }
 
   html.light {
