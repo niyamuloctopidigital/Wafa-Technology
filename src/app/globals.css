@@ -31,35 +31,6 @@
   }
 
   /* Light mode overrides */
-  html.light .bg-\[\#050505\] { background-color: #f8f9fa !important; }
-  html.light .bg-\[\#060606\] { background-color: #f0f1f3 !important; }
-  html.light .bg-\[\#0a0a0a\] { background-color: #ffffff !important; }
-  html.light .bg-\[\#0c0c0c\] { background-color: #ffffff !important; }
-
-  html.light .text-white { color: #111827 !important; }
-  html.light .text-white\/40 { color: rgba(17, 24, 39, 0.55) !important; }
-  html.light .text-white\/50 { color: rgba(17, 24, 39, 0.6) !important; }
-  html.light .text-white\/60 { color: rgba(17, 24, 39, 0.65) !important; }
-  html.light .text-white\/70 { color: rgba(17, 24, 39, 0.7) !important; }
-  html.light .text-white\/30 { color: rgba(17, 24, 39, 0.45) !important; }
-  html.light .text-white\/25 { color: rgba(17, 24, 39, 0.4) !important; }
-  html.light .text-white\/20 { color: rgba(17, 24, 39, 0.3) !important; }
-  html.light .text-white\/15 { color: rgba(17, 24, 39, 0.2) !important; }
-
-  html.light .border-white\/\[0\.06\] { border-color: rgba(0, 0, 0, 0.08) !important; }
-  html.light .border-white\/\[0\.05\] { border-color: rgba(0, 0, 0, 0.07) !important; }
-  html.light .border-white\/\[0\.04\] { border-color: rgba(0, 0, 0, 0.06) !important; }
-  html.light .border-white\/\[0\.08\] { border-color: rgba(0, 0, 0, 0.1) !important; }
-  html.light .border-white\/\[0\.1\] { border-color: rgba(0, 0, 0, 0.12) !important; }
-  html.light .border-white\/10 { border-color: rgba(0, 0, 0, 0.08) !important; }
-
-  html.light .bg-white\/\[0\.02\] { background-color: rgba(0, 0, 0, 0.02) !important; }
-  html.light .bg-white\/\[0\.03\] { background-color: rgba(0, 0, 0, 0.03) !important; }
-  html.light .bg-white\/\[0\.04\] { background-color: rgba(0, 0, 0, 0.03) !important; }
-  html.light .bg-white\/\[0\.05\] { background-color: rgba(0, 0, 0, 0.04) !important; }
-  html.light .bg-white\/\[0\.06\] { background-color: rgba(0, 0, 0, 0.04) !important; }
-  html.light .bg-white\/5 { background-color: rgba(0, 0, 0, 0.04) !important; }
-
   html.light .glass-card {
     background: linear-gradient(135deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.01) 100%) !important;
     border-color: rgba(0, 0, 0, 0.08) !important;
@@ -80,10 +51,6 @@
   html.light .outline-button {
     border-color: rgba(22, 163, 74, 0.3) !important;
     color: #16A34A !important;
-  }
-
-  html.light ::selection {
-    @apply bg-green-200 text-green-900;
   }
 
   html.light ::-webkit-scrollbar-track { background: #f0f0f0; }
@@ -298,3 +265,113 @@
 .animate-gradient { animation: gradient-shift 8s ease infinite; background-size: 200% 200%; }
 .animate-orbit { animation: orbit 20s linear infinite; }
 .animate-marquee { animation: marquee 30s linear infinite; }
+
+/* ============================= */
+/* === LIGHT MODE OVERRIDES === */
+/* ============================= */
+html.light {
+  color-scheme: light;
+}
+
+html.light * {
+  --tw-text-opacity: 1;
+}
+
+/* Swap dark backgrounds to light */
+html.light [class*="bg-[#050505]"],
+html.light [class*="bg-[#060606]"],
+html.light [class*="bg-[#0a0a0a]"],
+html.light [class*="bg-[#0c0c0c]"],
+html.light [class*="bg-[#111"] {
+  background-color: #f8f9fa !important;
+}
+
+/* White text becomes dark */
+html.light [class*="text-white"] {
+  color: #1a1a2e !important;
+}
+
+/* Restore green accent text */
+html.light [class*="text-emerald"] {
+  color: revert !important;
+}
+html.light .text-emerald-400 { color: #059669 !important; }
+html.light [class*="text-green"] { color: revert !important; }
+html.light .text-green-400 { color: #16a34a !important; }
+
+/* Restore specific colored text */
+html.light [class*="text-purple"] { color: revert !important; }
+html.light [class*="text-blue"] { color: revert !important; }
+html.light [class*="text-orange"] { color: revert !important; }
+html.light [class*="text-cyan"] { color: revert !important; }
+html.light [class*="text-pink"] { color: revert !important; }
+html.light [class*="text-yellow"] { color: revert !important; }
+html.light [class*="text-red"] { color: revert !important; }
+
+/* Muted text */
+html.light .text-gray-400 { color: #6b7280 !important; }
+html.light .text-gray-300 { color: #4b5563 !important; }
+html.light .text-gray-500 { color: #9ca3af !important; }
+
+/* Borders */
+html.light [class*="border-white"] {
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Semi-transparent white backgrounds become semi-transparent black */
+html.light [class*="bg-white/"] {
+  background-color: rgba(0, 0, 0, 0.03) !important;
+}
+
+/* Keep emerald/green backgrounds */
+html.light [class*="bg-emerald"] { background-color: revert !important; }
+html.light [class*="bg-blue"] { background-color: revert !important; }
+html.light [class*="bg-purple"] { background-color: revert !important; }
+html.light [class*="bg-orange"] { background-color: revert !important; }
+html.light [class*="bg-cyan"] { background-color: revert !important; }
+html.light [class*="bg-pink"] { background-color: revert !important; }
+html.light [class*="bg-yellow"] { background-color: revert !important; }
+html.light [class*="bg-red"] { background-color: revert !important; }
+html.light [class*="bg-green"] { background-color: revert !important; }
+html.light [class*="bg-gradient"] { background: revert !important; }
+
+/* Fix glow-button text to stay dark on green bg */
+html.light .glow-button { color: #050505 !important; }
+
+/* Terminal/code blocks stay dark */
+html.light .font-mono[class*="bg-[#0"] { background-color: #0c0c0c !important; }
+html.light [class*="rounded-xl"][class*="bg-[#0a0a0a]"][class*="shadow"] { background-color: #0c0c0c !important; }
+html.light [class*="rounded-xl"][class*="bg-[#0a0a0a]"][class*="shadow"] * { color: revert !important; }
+
+/* Backdrop blur navbar in light mode */
+html.light nav[class*="glass-card"] {
+  background: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(20px) !important;
+}
+
+/* Footer */
+html.light footer { background-color: #f0f1f3 !important; }
+
+/* Form inputs */
+html.light input,
+html.light textarea,
+html.light select {
+  background-color: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  color: #111827 !important;
+}
+
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #9ca3af !important;
+}
+
+/* Shadows */
+html.light [class*="shadow-2xl"] {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Gradient fade edges for marquee */
+html.light [class*="from-[#050505]"] {
+  --tw-gradient-from: #f8f9fa !important;
+}
