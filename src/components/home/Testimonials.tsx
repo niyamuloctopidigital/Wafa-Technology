@@ -1,85 +1,95 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Star, Quote } from 'lucide-react';
 
-const testimonials = [
+const fallbackTestimonials = [
   {
-    quote:
-      'Wafa Technology transformed our entire operations with their AI automation platform. We saw a 300% efficiency increase within three months.',
+    quote: 'Wafa Technology transformed our entire operations with their AI automation platform. We saw a 300% efficiency increase within three months.',
     author: 'Sarah Chen',
-    role: 'CTO, FinanceCore',
+    role: 'CTO',
+    company: 'FinanceCore',
     initials: 'SC',
+    rating: 5,
   },
   {
-    quote:
-      'The mobile app they built for us reached 50,000 users in the first quarter. Their engineering quality is unmatched.',
+    quote: 'The mobile app they built for us reached 50,000 users in the first quarter. Their engineering quality is unmatched.',
     author: 'Marcus Webb',
-    role: 'CEO, HealthSync',
+    role: 'CEO',
+    company: 'HealthSync',
     initials: 'MW',
+    rating: 5,
   },
   {
-    quote:
-      'Their backend team re-architected our entire platform. Zero downtime migration, 10x throughput improvement. Exceptional work.',
+    quote: 'Their backend team re-architected our entire platform. Zero downtime migration, 10x throughput improvement. Exceptional work.',
     author: 'Aisha Patel',
-    role: 'VP Engineering, LogiTrack',
+    role: 'VP Engineering',
+    company: 'LogiTrack',
     initials: 'AP',
+    rating: 5,
   },
   {
-    quote:
-      'We needed a team that could handle complex AI integration at scale. Wafa delivered beyond our expectations, on time and on budget.',
+    quote: 'We needed a team that could handle complex AI integration at scale. Wafa delivered beyond our expectations, on time and on budget.',
     author: 'James Morrison',
-    role: 'Founder, DataPulse',
+    role: 'Founder',
+    company: 'DataPulse',
     initials: 'JM',
+    rating: 5,
   },
   {
-    quote:
-      'Professional, responsive, and technically brilliant. They saved us 40+ hours weekly through intelligent process automation.',
+    quote: 'Professional, responsive, and technically brilliant. They saved us 40+ hours weekly through intelligent process automation.',
     author: 'Elena Rodriguez',
-    role: 'COO, ScaleOps',
+    role: 'COO',
+    company: 'ScaleOps',
     initials: 'ER',
+    rating: 5,
   },
   {
-    quote:
-      'The cross-platform app they delivered works flawlessly on iOS, Android, and tablets. Our customers love the seamless experience.',
+    quote: 'The cross-platform app they delivered works flawlessly on iOS, Android, and tablets. Our customers love the seamless experience.',
     author: 'David Kim',
-    role: 'Product Lead, NexGen',
+    role: 'Product Lead',
+    company: 'NexGen',
     initials: 'DK',
+    rating: 5,
   },
 ];
 
-const row1 = testimonials.slice(0, 3);
-const row2 = testimonials.slice(3, 6);
+interface TestimonialData {
+  quote: string;
+  author: string;
+  role: string;
+  company?: string;
+  initials: string;
+  rating: number;
+}
 
-function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[0] }) {
+function TestimonialCard({ testimonial }: { testimonial: TestimonialData }) {
   return (
     <div className="flex-shrink-0 w-[380px] p-6 rounded-2xl border border-white/[0.05] bg-white/[0.02] hover:border-white/[0.08] transition-all duration-300 mx-2">
-      {/* Stars */}
       <div className="flex gap-0.5 mb-4">
         {[...Array(5)].map((_, i) => (
-          <Star key={i} size={12} className="text-emerald-400 fill-emerald-400" />
+          <Star
+            key={i}
+            size={12}
+            className={i < testimonial.rating ? 'text-emerald-400 fill-emerald-400' : 'text-white/10'}
+          />
         ))}
       </div>
-
-      {/* Quote */}
       <div className="relative">
         <Quote size={20} className="text-white/[0.04] absolute -top-1 -left-1" />
-        <p className="text-sm text-white/50 leading-relaxed pl-3">
-          {testimonial.quote}
-        </p>
+        <p className="text-sm text-white/50 leading-relaxed pl-3">{testimonial.quote}</p>
       </div>
-
-      {/* Author */}
       <div className="flex items-center gap-3 mt-6 pt-5 border-t border-white/[0.04]">
         <div className="w-9 h-9 rounded-full bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 flex items-center justify-center border border-emerald-500/10">
-          <span className="text-[10px] font-semibold text-emerald-400">
-            {testimonial.initials}
-          </span>
+          <span className="text-[10px] font-semibold text-emerald-400">{testimonial.initials}</span>
         </div>
         <div>
           <div className="text-sm font-medium text-white">{testimonial.author}</div>
-          <div className="text-xs text-white/30">{testimonial.role}</div>
+          <div className="text-xs text-white/30">
+            {testimonial.role}{testimonial.company ? `, ${testimonial.company}` : ''}
+          </div>
         </div>
       </div>
     </div>
@@ -87,7 +97,34 @@ function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[0] 
 }
 
 export default function Testimonials() {
+  const [testimonials, setTestimonials] = useState<TestimonialData[]>(fallbackTestimonials);
   const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
+
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      try {
+        const res = await fetch('/api/testimonials?isActive=true');
+        const data = await res.json();
+        if (data.success && data.data.length > 0) {
+          setTestimonials(data.data.map((t: any) => ({
+            quote: t.quote,
+            author: t.author,
+            role: t.role,
+            company: t.company,
+            initials: t.initials,
+            rating: t.rating,
+          })));
+        }
+      } catch (error) {
+        // Keep fallback data
+      }
+    };
+    fetchTestimonials();
+  }, []);
+
+  const half = Math.ceil(testimonials.length / 2);
+  const row1 = testimonials.slice(0, half);
+  const row2 = testimonials.slice(half);
 
   return (
     <section className="relative py-24 lg:py-32 overflow-hidden">
@@ -111,10 +148,10 @@ export default function Testimonials() {
         </motion.div>
       </div>
 
-      {/* Marquee Row 1 - scrolls left */}
+      {/* Marquee Row 1 */}
       <div className="relative mb-4">
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#050505] to-transparent z-10" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#050505] to-transparent z-10" />
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#050505] to-transparent z-10 marquee-fade-left" />
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#050505] to-transparent z-10 marquee-fade-right" />
         <motion.div
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
@@ -127,10 +164,10 @@ export default function Testimonials() {
         </motion.div>
       </div>
 
-      {/* Marquee Row 2 - scrolls right */}
+      {/* Marquee Row 2 */}
       <div className="relative">
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#050505] to-transparent z-10" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#050505] to-transparent z-10" />
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#050505] to-transparent z-10 marquee-fade-left" />
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#050505] to-transparent z-10 marquee-fade-right" />
         <motion.div
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}

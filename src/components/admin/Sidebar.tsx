@@ -15,6 +15,7 @@ import {
   FiMenu,
   FiX,
   FiLogOut,
+  FiStar,
 } from 'react-icons/fi';
 
 const navItems = [
@@ -22,6 +23,7 @@ const navItems = [
   { label: 'Team', href: '/admin/team', icon: FiUsers },
   { label: 'Projects', href: '/admin/projects', icon: FiFolder },
   { label: 'Services', href: '/admin/services', icon: FiGrid },
+  { label: 'Testimonials', href: '/admin/testimonials', icon: FiStar },
   { label: 'Blog', href: '/admin/blog', icon: FiFileText },
   { label: 'Leads', href: '/admin/leads', icon: FiMail },
   { label: 'Settings', href: '/admin/settings', icon: FiSettings },

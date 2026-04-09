@@ -510,3 +510,5 @@ html.light .font-mono .text-emerald-400 { color: #059669 !important; }
 html.light [class*="from-[#050505]"] {
   --tw-gradient-from: #f8f9fa !important;
 }
+html.light .marquee-fade-left { background: linear-gradient(to right, #f8f9fa, transparent) !important; }
+html.light .marquee-fade-right { background: linear-gradient(to left, #f8f9fa, transparent) !important; }
