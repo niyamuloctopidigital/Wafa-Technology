@@ -27,15 +27,22 @@ export const metadata: Metadata = {
 
 const defaultFavicon = 'https://wafatechnology.com/wp-content/uploads/2025/11/WF-LOGO1-2-3.png';
 
-async function getFavicon(): Promise<string> {
+async function getSiteSettings(): Promise<{ faviconUrl: string; headerTrackingCode: string; footerTrackingCode: string }> {
+  const defaults = { faviconUrl: defaultFavicon, headerTrackingCode: '', footerTrackingCode: '' };
   try {
     if (process.env.MONGODB_URI) {
       await dbConnect();
       const settings: any = await Settings.findOne().lean();
-      if (settings?.faviconUrl) return settings.faviconUrl;
+      if (settings) {
+        return {
+          faviconUrl: settings.faviconUrl || defaultFavicon,
+          headerTrackingCode: settings.headerTrackingCode || '',
+          footerTrackingCode: settings.footerTrackingCode || '',
+        };
+      }
     }
   } catch (e) {}
-  return defaultFavicon;
+  return defaults;
 }
 
 export default async function RootLayout({
@@ -43,7 +50,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const faviconUrl = await getFavicon();
+  const { faviconUrl, headerTrackingCode, footerTrackingCode } = await getSiteSettings();
 
   return (
     <html lang="en" className={`dark ${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
@@ -64,6 +71,9 @@ export default async function RootLayout({
         `}} />
         <link rel="icon" href={faviconUrl} />
         <link rel="apple-touch-icon" href={faviconUrl} />
+        {headerTrackingCode && (
+          <div dangerouslySetInnerHTML={{ __html: headerTrackingCode }} />
+        )}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -97,6 +107,9 @@ export default async function RootLayout({
           <Footer />
           <Toaster position="top-right" />
         </Providers>
+        {footerTrackingCode && (
+          <div dangerouslySetInnerHTML={{ __html: footerTrackingCode }} />
+        )}
       </body>
     </html>
   );

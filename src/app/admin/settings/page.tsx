@@ -20,6 +20,8 @@ interface Settings {
   };
   calendarLink?: string;
   calendarEmbedCode?: string;
+  headerTrackingCode?: string;
+  footerTrackingCode?: string;
   analytics: {
     googleAnalyticsId?: string;
     metaPixelId?: string;
@@ -42,6 +44,8 @@ const initialSettings: Settings = {
   },
   calendarLink: '',
   calendarEmbedCode: '',
+  headerTrackingCode: '',
+  footerTrackingCode: '',
   analytics: {
     googleAnalyticsId: '',
     metaPixelId: '',
@@ -349,6 +353,46 @@ export default function SettingsPage() {
               />
               <p className="text-xs text-gray-500 mt-1">
                 Your Meta Pixel ID for Facebook/Instagram conversion tracking
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Tracking Codes */}
+        <div className="bg-[#111111] border border-gray-800 rounded-lg p-6">
+          <h2 className="text-xl font-bold text-gray-200 mb-2">Tracking Codes</h2>
+          <p className="text-sm text-gray-400 mb-6">
+            Add custom tracking scripts. Header code is injected in &lt;head&gt; and footer code before &lt;/body&gt;. Supports Google Tag Manager, Meta Pixel, Hotjar, etc.
+          </p>
+          <div className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-300 mb-2">
+                Header Tracking Code
+              </label>
+              <textarea
+                value={settings.headerTrackingCode || ''}
+                onChange={(e) => setSettings({ ...settings, headerTrackingCode: e.target.value })}
+                rows={5}
+                placeholder={'<!-- Google Tag Manager -->\n<script>...</script>\n<!-- End Google Tag Manager -->'}
+                className="w-full px-4 py-2 bg-[#0a0a0a] border border-gray-700 rounded-lg text-gray-200 focus:border-[#4ADE80] focus:outline-none transition-colors font-mono text-xs"
+              />
+              <p className="text-xs text-gray-500 mt-1">
+                Injected inside &lt;head&gt; tag on every page
+              </p>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-300 mb-2">
+                Footer Tracking Code
+              </label>
+              <textarea
+                value={settings.footerTrackingCode || ''}
+                onChange={(e) => setSettings({ ...settings, footerTrackingCode: e.target.value })}
+                rows={5}
+                placeholder={'<!-- Google Tag Manager (noscript) -->\n<noscript>...</noscript>\n<!-- End Google Tag Manager (noscript) -->'}
+                className="w-full px-4 py-2 bg-[#0a0a0a] border border-gray-700 rounded-lg text-gray-200 focus:border-[#4ADE80] focus:outline-none transition-colors font-mono text-xs"
+              />
+              <p className="text-xs text-gray-500 mt-1">
+                Injected before &lt;/body&gt; tag on every page
               </p>
             </div>
           </div>

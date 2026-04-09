@@ -2,13 +2,13 @@ import { MetadataRoute } from 'next';
 import dbConnect from '@/lib/mongodb';
 import Blog from '@/models/Blog';
 import Service from '@/models/Service';
-import Project from '@/models/Project';
-import Team from '@/models/Team';
+
+export const revalidate = 3600; // Regenerate sitemap every hour
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://wafatechnology.com';
 
-  // Static pages
+  // All static pages
   const staticPages: MetadataRoute.Sitemap = [
     { url: baseUrl, lastModified: new Date(), changeFrequency: 'weekly', priority: 1 },
     { url: `${baseUrl}/services`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
@@ -17,6 +17,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${baseUrl}/team`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${baseUrl}/about`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${baseUrl}/contact`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${baseUrl}/booking`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
   ];
 
   // Dynamic pages from database
@@ -27,13 +28,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     if (process.env.MONGODB_URI) {
       await dbConnect();
 
-      // Blog posts
+      // Blog posts - automatically includes new posts
       const blogs = await Blog.find({ isPublished: true })
-        .select('slug updatedAt')
+        .select('slug updatedAt createdAt')
+        .sort({ createdAt: -1 })
         .lean();
       blogPages = blogs.map((blog: any) => ({
         url: `${baseUrl}/blog/${blog.slug}`,
-        lastModified: blog.updatedAt || new Date(),
+        lastModified: blog.updatedAt || blog.createdAt || new Date(),
         changeFrequency: 'weekly' as const,
         priority: 0.6,
       }));

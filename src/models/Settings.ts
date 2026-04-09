@@ -16,6 +16,8 @@ export interface ISettings extends Document {
   };
   calendarLink?: string;
   calendarEmbedCode?: string;
+  headerTrackingCode?: string;
+  footerTrackingCode?: string;
   analytics: {
     googleAnalyticsId?: string;
     metaPixelId?: string;
@@ -41,6 +43,8 @@ const SettingsSchema = new Schema<ISettings>(
     },
     calendarLink: { type: String },
     calendarEmbedCode: { type: String },
+    headerTrackingCode: { type: String, default: '' },
+    footerTrackingCode: { type: String, default: '' },
     analytics: {
       googleAnalyticsId: { type: String },
       metaPixelId: { type: String },
