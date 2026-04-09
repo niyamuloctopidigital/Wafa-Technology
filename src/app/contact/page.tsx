@@ -365,7 +365,7 @@ export default function ContactPage() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="lg:col-span-2 space-y-6"
             >
-              {/* Calendly */}
+              {/* Book a Call */}
               <div className="p-6 rounded-2xl border border-emerald-500/15 bg-emerald-500/[0.03]">
                 <div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center mb-4">
                   <Clock size={18} className="text-emerald-400" strokeWidth={1.5} />
@@ -374,22 +374,13 @@ export default function ContactPage() {
                 <p className="text-sm text-white/30 mb-5 leading-relaxed">
                   Book a free 30-minute consultation with our engineering team.
                 </p>
-                {siteSettings.calendarEmbedCode ? (
-                  <div
-                    className="rounded-xl overflow-hidden"
-                    dangerouslySetInnerHTML={{ __html: siteSettings.calendarEmbedCode }}
-                  />
-                ) : (
-                  <a
-                    href={siteSettings.calendarLink || '#'}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-sm text-emerald-400 font-medium hover:bg-emerald-500/15 transition-all"
-                  >
-                    Schedule a Call
-                    <ArrowRight size={14} />
-                  </a>
-                )}
+                <Link
+                  href="/booking"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-sm text-emerald-400 font-medium hover:bg-emerald-500/15 transition-all"
+                >
+                  Schedule a Call
+                  <ArrowRight size={14} />
+                </Link>
               </div>
 
               {/* Response time */}
