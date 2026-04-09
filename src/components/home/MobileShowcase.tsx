@@ -99,39 +99,41 @@ function BrowserMockup({ data }: { data: typeof platformData.web }) {
     >
       <div className="relative">
         <div className="absolute -inset-8 rounded-3xl bg-emerald-500/[0.04] blur-2xl" />
-        <div className="relative rounded-xl border border-white/[0.08] bg-[#0a0a0a] overflow-hidden shadow-2xl shadow-black/50">
-          <div className="flex items-center gap-3 px-4 py-3 border-b border-white/[0.06] bg-white/[0.02]">
+        <div className="browser-mockup relative rounded-xl overflow-hidden">
+          {/* Chrome bar */}
+          <div className="browser-chrome flex items-center gap-3 px-4 py-3">
             <div className="flex gap-1.5">
-              <div className="w-2.5 h-2.5 rounded-full bg-red-400/40" />
-              <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/40" />
-              <div className="w-2.5 h-2.5 rounded-full bg-green-400/40" />
+              <div className="w-2.5 h-2.5 rounded-full bg-red-400/60" />
+              <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/60" />
+              <div className="w-2.5 h-2.5 rounded-full bg-green-400/60" />
             </div>
             <div className="flex-1 mx-4">
-              <div className="bg-white/[0.04] rounded-md px-3 py-1.5 flex items-center gap-2">
+              <div className="browser-url-bar rounded-md px-3 py-1.5 flex items-center gap-2">
                 <Shield size={10} className="text-emerald-400/50" />
-                <span className="text-[11px] text-white/30 font-mono">{data.subtitle}</span>
+                <span className="text-[11px] browser-url-text font-mono">{data.subtitle}</span>
               </div>
             </div>
           </div>
+          {/* Content */}
           <div className="p-5">
             <div className="flex items-center justify-between mb-4">
               <div>
-                <div className="text-sm font-semibold text-white">{data.title}</div>
-                <div className="text-[10px] text-white/25 mt-0.5">Real-time overview</div>
+                <div className="text-sm font-semibold browser-title">{data.title}</div>
+                <div className="text-[10px] browser-subtitle mt-0.5">Real-time overview</div>
               </div>
               <div className="px-2.5 py-1 rounded-md bg-emerald-500/10 text-[10px] text-emerald-400 font-medium flex items-center gap-1">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                 Live
               </div>
             </div>
-            <div className="h-28 rounded-lg bg-white/[0.03] border border-white/[0.04] mb-4 p-3 flex items-end gap-1.5">
+            <div className="h-28 rounded-lg browser-chart-area mb-4 p-3 flex items-end gap-1.5">
               {[40, 55, 35, 70, 50, 80, 65, 90, 75, 85, 60, 95].map((h, i) => (
                 <motion.div
                   key={i}
                   initial={{ height: 0 }}
                   animate={{ height: `${h}%` }}
                   transition={{ delay: 0.3 + i * 0.05, duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-                  className="flex-1 rounded-sm bg-gradient-to-t from-emerald-500/40 to-emerald-400/5"
+                  className="flex-1 rounded-sm bg-gradient-to-t from-emerald-500/40 to-emerald-400/10"
                 />
               ))}
             </div>
@@ -142,10 +144,10 @@ function BrowserMockup({ data }: { data: typeof platformData.web }) {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6 + i * 0.1 }}
-                  className={`p-3 rounded-lg ${screen.accent} border border-white/[0.04]`}
+                  className={`p-3 rounded-lg ${screen.accent} browser-panel`}
                 >
-                  <div className="w-5 h-5 rounded bg-white/[0.06] mb-2" />
-                  <div className="text-[9px] text-white/50 font-medium">{screen.label}</div>
+                  <div className="w-5 h-5 rounded browser-panel-icon mb-2" />
+                  <div className="text-[9px] browser-panel-text font-medium">{screen.label}</div>
                 </motion.div>
               ))}
             </div>
